@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<ISO15745Profile xmlns="http://www.profibus.com/GSDML/2003/11/DeviceProfile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.profibus.com/GSDML/2003/11/DeviceProfile ..\xsd\GSDML-DeviceProfile-V2.4.xsd">
+   <!-- ProfileHeader definition as defined in ISO 15745-1. Please do not change the content. -->
+   <ProfileHeader>
+      <ProfileIdentification>PROFINET Device Profile</ProfileIdentification>
+      <ProfileRevision>1.00</ProfileRevision>
+      <ProfileName>Device Profile for PROFINET Devices</ProfileName>
+      <ProfileSource>PROFIBUS Nutzerorganisation e. V. (PNO)</ProfileSource>
+      <ProfileClassID>Device</ProfileClassID>
+      <ISO15745Reference>
+         <ISO15745Part>4</ISO15745Part>
+         <ISO15745Edition>1</ISO15745Edition>
+         <ProfileTechnology>GSDML</ProfileTechnology>
+      </ISO15745Reference>
+   </ProfileHeader>
+   <ProfileBody>
+      <DeviceIdentity VendorID="0x0493" DeviceID="0x0002">
+         <InfoText TextId="IDT_INFO_Device"/>
+         <VendorName Value="KKS Ultraschall AG"/>
+      </DeviceIdentity>
+      <DeviceFunction>
+         <Family MainFamily="Gateway" ProductFamily="KKS Ultraschall AG"/>
+      </DeviceFunction>
+      <ApplicationProcess>
+         <DeviceAccessPointList>
+            <DeviceAccessPointItem ID="IDD_1" PNIO_Version="V2.4" PhysicalSlots="0..16" ModuleIdentNumber="0x00000001" MinDeviceInterval="32" DNS_CompatibleName="kks-dcm" FixedInSlots="0" ObjectUUID_LocalIndex="1" DeviceAccessSupported="false" MultipleWriteSupported="true" CheckDeviceID_Allowed="true" NameOfStationNotTransferable="false" LLDP_NoD_Supported="true" ResetToFactoryModes="1..2">
+               <ModuleInfo>
+                  <Name TextId="IDT_MODULE_NAME_DAP1"/>
+                  <InfoText TextId="IDT_INFO_DAP1"/>
+                  <VendorName Value="KKS Ultraschall AG"/>
+                  <OrderNumber Value="KKS-DCM"/>
+                  <HardwareRelease Value="B02"/>
+                  <SoftwareRelease Value="V1.4.0"/>
+               </ModuleInfo>
+               <CertificationInfo ConformanceClass="B" ApplicationClass="" NetloadClass="I"/>
+               <IOConfigData MaxInputLength="244" MaxOutputLength="244"/>
+               <UseableModules>
+                  <ModuleItemRef ModuleItemTarget="IDM_32" AllowedInSlots="1..16"/>
+               </UseableModules>
+               <VirtualSubmoduleList>
+                  <VirtualSubmoduleItem ID="IDS_1" SubmoduleIdentNumber="0x00000001" Writeable_IM_Records="1 2 3" MayIssueProcessAlarm="false">
+                     <IOData/>
+                     <ModuleInfo>
+                        <Name TextId="IDT_MODULE_NAME_DAP1"/>
+                        <InfoText TextId="IDT_INFO_DAP1"/>
+                     </ModuleInfo>
+                  </VirtualSubmoduleItem>
+               </VirtualSubmoduleList>
+               <SystemDefinedSubmoduleList>
+                  <InterfaceSubmoduleItem ID="IDS_I" SubmoduleIdentNumber="0x00008000" SubslotNumber="32768" TextId="IDT_NAME_IS" SupportedRT_Classes="RT_CLASS_1" SupportedProtocols="SNMP;LLDP" NetworkComponentDiagnosisSupported="false" PTP_BoundarySupported="true" DCP_BoundarySupported="true">
+                     <ApplicationRelations StartupMode="Advanced">
+                        <TimingProperties SendClock="32" ReductionRatio="256 512"/>
+                     </ApplicationRelations>
+                  </InterfaceSubmoduleItem>
+                  <PortSubmoduleItem ID="IDS_P1" SubmoduleIdentNumber="0x00008001" SubslotNumber="32769" TextId="IDT_NAME_PS1" MaxPortRxDelay="350" MaxPortTxDelay="160">
+                     <MAUTypeList>
+                        <MAUTypeItem Value="30"/>
+                        <MAUTypeItem Value="16"/>
+                        <MAUTypeItem Value="5"/>
+                     </MAUTypeList>
+                  </PortSubmoduleItem>
+               </SystemDefinedSubmoduleList>
+               <Graphics>
+                  <GraphicItemRef Type="DeviceSymbol" GraphicItemTarget="KKS-DCM-Image"/>
+               </Graphics>
+            </DeviceAccessPointItem>
+         </DeviceAccessPointList>
+         <ModuleList>
+            <ModuleItem ID="IDM_32" ModuleIdentNumber="0x00000032">
+               <ModuleInfo>
+                  <Name TextId="TOK_Name_Module_I8O8"/>
+                  <InfoText TextId="TOK_InfoText_Module_I8O8"/>
+                  <HardwareRelease Value="1.0"/>
+                  <SoftwareRelease Value="1.0"/>
+               </ModuleInfo>
+               <VirtualSubmoduleList>
+                  <VirtualSubmoduleItem ID="IDSM_132" SubmoduleIdentNumber="0x0132" MayIssueProcessAlarm="true">
+                     <IOData>
+                        <Input Consistency="All items consistency">
+                           <DataItem DataType="Unsigned8" TextId="TOK_Input_GEN_Status0"></DataItem>
+                           <DataItem DataType="Unsigned8" TextId="TOK_Input_GEN_Status1"></DataItem>
+                           <DataItem DataType="Unsigned8" TextId="TOK_Input_GEN_Error"></DataItem>
+                           <DataItem DataType="Unsigned8" TextId="TOK_Input_GEN_Actual_Power"></DataItem>
+                        </Input>
+                        <Output Consistency="All items consistency">
+                           <DataItem DataType="Unsigned8" TextId="TOK_Output_GEN_Control0"></DataItem>
+                           <DataItem DataType="Unsigned8" TextId="TOK_Output_GEN_Control1"></DataItem>
+                           <DataItem DataType="Unsigned8" TextId="TOK_Output_GEN_Power_Set"></DataItem>
+                        </Output>
+                     </IOData> 
+                     <RecordDataList>
+                     </RecordDataList>
+                     <ModuleInfo>
+                        <Name TextId="TOK_Name_Module_I8O8"/>
+                        <InfoText TextId="TOK_InfoText_Module_I8O8"/>
+                     </ModuleInfo>
+                  </VirtualSubmoduleItem>
+               </VirtualSubmoduleList>
+            </ModuleItem>
+         </ModuleList>
+
+         <GraphicsList>
+            <GraphicItem ID="KKS-DCM-Image" GraphicFile="GSDML-KKS-DCM"/>
+         </GraphicsList>
+         <ExternalTextList>
+            <PrimaryLanguage>
+               <Text TextId="IDT_INFO_Device" Value="Ultraschall Generator Profinet Gateway"/>
+               <Text TextId="IDT_MODULE_NAME_DAP1" Value="KKS-DCM"/>
+               <Text TextId="IDT_INFO_DAP1" Value="Ultraschall Generator Profinet Gateway https://kks-surfacetreatment.com/"/>
+               <Text TextId="IDT_NAME_IS" Value="X1"/>
+               <Text TextId="IDT_NAME_PS1" Value="X1 P1"/>
+               <Text TextId="IDT_NAME_PS2" Value="X1 P2"/>
+               <!--module name-->
+               <Text TextId="TOK_Name_Module_I8O8" Value="Power Module"/>
+               <!--module info -->
+               <Text TextId="TOK_InfoText_Module_I8O8" Value="Power Module"/>
+               <!--dataitem name-->
+               <Text TextId="TOK_Input_GEN_Status0" Value="Generator Status0"/>
+               <Text TextId="TOK_Input_GEN_Status1" Value="Generator Status1"/>
+               <Text TextId="TOK_Input_GEN_Error" Value="Generator Error"/>
+               <Text TextId="TOK_Input_GEN_Actual_Power" Value="Generator Actual Power"/>
+               <Text TextId="TOK_Output_GEN_Control0" Value="Generator Control0"/>
+               <Text TextId="TOK_Output_GEN_Control1" Value="Generator Control1"/>
+               <Text TextId="TOK_Output_GEN_Power_Set" Value="Generator Power Set"/>
+
+               <!--ParameterRecordDataItem name-->
+               <Text TextId="TOK_sample_parameter_1" Value="Parameter 1"/>
+               <Text TextId="TOK_sample_parameter_2" Value="Parameter 2"/>
+               
+            </PrimaryLanguage>
+         </ExternalTextList>
+      </ApplicationProcess>
+   </ProfileBody>
+</ISO15745Profile>
